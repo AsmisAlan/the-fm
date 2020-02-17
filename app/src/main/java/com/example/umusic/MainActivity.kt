@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import com.example.umusic.Controller.LastFMApiController
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        toolbar.title ="The FM";
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
@@ -40,9 +39,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_logout
             ), drawerLayout
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        this.getFrom()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -54,4 +58,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun getFrom()
+    {
+        val trackApi =  LastFMApiController()
+        trackApi.GetAll()
+    }
+
 }

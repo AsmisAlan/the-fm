@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "105577394272",
+    "firebase_url": "https://thefm-app.firebaseio.com",
+    "project_id": "thefm-app",
+    "storage_bucket": "thefm-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105577394272:android:5278ad21e5bcd0bc941305",
+        "android_client_info": {
+          "package_name": "com.example.umusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105577394272-9nap790gttm7t9r38u5q8ctnsohihrcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg8VIc1hJgfCckMSkOkl5-LdfnfdlOCOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105577394272-9nap790gttm7t9r38u5q8ctnsohihrcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
