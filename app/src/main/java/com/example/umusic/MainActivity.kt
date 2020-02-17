@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home,
-                R.id.nav_gallery,
+                R.id.nav_artist,
+                R.id.nav_tracks,
                 R.id.nav_slideshow,
                 R.id.nav_logout
             ), drawerLayout
@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        this.getFrom()
     }
 
 
@@ -58,11 +57,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    fun getFrom()
-    {
-        val trackApi =  LastFMApiController()
-        trackApi.GetAll()
-    }
-
 }

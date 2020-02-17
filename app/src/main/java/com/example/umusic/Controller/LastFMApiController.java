@@ -17,7 +17,7 @@ public class LastFMApiController implements Callback<TracksResponse>  {
     static final String BASE_URL = "http://ws.audioscrobbler.com/2.0/";
     static final String API_KEY = "4e61bdef6472e3ec9037bef0fab423f5";
 
-    public void GetAll()
+    public Call<TracksResponse> GetAll()
     {
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -33,6 +33,8 @@ public class LastFMApiController implements Callback<TracksResponse>  {
 
         Call<TracksResponse> call = gerritAPI.getTopTracks(API_KEY);
         call.enqueue(this);
+
+        return call;
     }
 
     @Override
