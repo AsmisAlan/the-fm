@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.umusic.Models.DataTransfers.TrackData;
 import com.example.umusic.R;
-import com.example.umusic.ui.Tracks.TrackCardFragment;
-
 import java.util.List;
 
 public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder> {
@@ -28,11 +26,10 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
 
         // create a new card view
         View v = LayoutInflater.from(parent.getContext())
-                               .inflate(R.layout.fragment_track_card, parent, false);
+                               .inflate(R.layout.track_card, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
 
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -58,8 +55,10 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
             this.track = track;
         }
 
-        public ViewHolder(@NonNull TrackCardFragment itemView) {
-            super(itemView);
+        public ViewHolder(@NonNull View itemView) {
+            super( itemView);
+
+
         }
     }
 }
