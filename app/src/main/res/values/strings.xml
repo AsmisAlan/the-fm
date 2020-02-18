@@ -6,11 +6,17 @@
     <string name="nav_header_subtitle">asmisalan@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+
     <string name="menu_slideshow">Slideshow</string>
+
+    <!-- Authentication labels-->
     <string name="menu_logout">Logout</string>
     <string name="menu_join">Subscribe</string>
+
+    <!-- list labels-->
+    <string name="menu_tracks">Canciones</string>
+    <string name="menu_artists">Artistas</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
