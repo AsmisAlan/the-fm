@@ -18,25 +18,20 @@ import com.example.umusic.Controller.LastFMApiController;
 import com.example.umusic.Models.DataTransfers.TrackData;
 import com.example.umusic.Models.Responses.TracksResponse;
 import com.example.umusic.R;
+import com.example.umusic.ui.Adapters.TracksAdapter;
 
 import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Tracks extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
-
-    private TracksViewModel mViewModel;
     private List<TrackData> trackList;
-
-    public static Tracks newInstance() {
-        return new Tracks();
-    }
+    private View loadingPanel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,33 +39,53 @@ public class Tracks extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View fragment = inflater.inflate(R.layout.tracks_fragment, container, false);
 
-        recyclerView = (RecyclerView) fragment.findViewById(R.id.tracks_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-        LastFMApiController tracksController = new LastFMApiController();
-
-        try {
-            Response<TracksResponse> data = tracksController.GetAll().execute();
-            this.OnDataLoaded(data.body().tracks.track);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        this.ConfigureRecycleView(fragment, R.id.tracks_view);
+        this.RefreshDataSource(fragment);
 
         return fragment;
     }
 
-    public void OnDataLoaded(List<TrackData> tracks)
-    {
+    private void ConfigureRecycleView(View fragment, int fragmentId){
+        recyclerView = fragment.findViewById(fragmentId);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
 
+    private void RefreshDataSource(View fragment)
+    {
+        loadingPanel = fragment.findViewById(R.id.loadingPanel);
+
+
+        LastFMApiController tracksController = new LastFMApiController();
+        Call<TracksResponse> data = tracksController.GetAll();
+        data.enqueue(new Callback<TracksResponse>() {
+            @Override
+            public void onResponse(Call<TracksResponse> call, Response<TracksResponse> response) {
+                if (response.isSuccessful()) {
+                    onDataLoaded(response.body().tracks.track);
+                } else {
+                    System.out.println(response.errorBody());
+                }
+                loadingPanel.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<TracksResponse> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    private void onDataLoaded(List<TrackData> tracks)
+    {
+        this.trackList = tracks;
+        mAdapter = new TracksAdapter(this.trackList);
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(TracksViewModel.class);
         // TODO: Use the ViewModel
     }
 
