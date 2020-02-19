@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="loadingBackground">#37000000</color>
+    <color name="joinBackground">#F3292929</color>
+
+    <color name="google">#F3FC3333</color>
+    <color name="facebook">#F33354FC</color>
+    <color name="colorAccentJoin">#ECECEC</color>
 </resources>

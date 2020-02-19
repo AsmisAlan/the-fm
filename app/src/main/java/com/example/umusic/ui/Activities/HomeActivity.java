@@ -20,22 +20,22 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         BottomNavigationView bottomBar =  findViewById(R.id.bottom_bar);
         bottomBar.setSelectedItemId(R.id.tab_tracks);
-        bottomBar.setOnNavigationItemSelectedListener(new HomeBottomMenu(toolbar) );
-        bottomBar.performClick();
+        bottomBar.setOnNavigationItemSelectedListener(new HomeBottomMenu());
     }
 
-    class HomeBottomMenu implements BottomNavigationView.OnNavigationItemSelectedListener {
-        public HomeBottomMenu(Toolbar toolbar)
-        {
-            this.toolbar = toolbar;
-        }
 
-        private  Toolbar toolbar;
+
+    class HomeBottomMenu implements BottomNavigationView.OnNavigationItemSelectedListener {
+        public HomeBottomMenu( )
+        {
+            buildFragment(new Tracks());
+        }
 
         private void buildFragment(Fragment fragment){
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -49,11 +49,9 @@ public class HomeActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.tab_tracks:
-                    toolbar.setTitle("Caciones");
                     buildFragment(new Tracks());
                     return true;
                 case R.id.tab_artists:
-                    toolbar.setTitle("Artistas");
                     buildFragment(new Artists());
                     return true;
             }
