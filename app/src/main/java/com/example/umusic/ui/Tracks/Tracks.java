@@ -1,7 +1,5 @@
 package com.example.umusic.ui.Tracks;
 
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,13 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.umusic.Controller.LastFMApiController;
+import com.example.umusic.services.LastFMServices;
 import com.example.umusic.Models.DataTransfers.TrackData;
 import com.example.umusic.Models.Responses.TracksResponse;
 import com.example.umusic.R;
 import com.example.umusic.ui.Adapters.TracksAdapter;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -56,8 +53,8 @@ public class Tracks extends Fragment {
         loadingPanel = fragment.findViewById(R.id.loadingPanel);
 
 
-        LastFMApiController tracksController = new LastFMApiController();
-        Call<TracksResponse> data = tracksController.GetAll();
+        LastFMServices tracksController = LastFMServices.GetServiceInstance();
+        Call<TracksResponse> data = tracksController.GetAllTopTracks();
         data.enqueue(new Callback<TracksResponse>() {
             @Override
             public void onResponse(Call<TracksResponse> call, Response<TracksResponse> response) {
