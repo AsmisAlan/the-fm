@@ -1,6 +1,7 @@
 package com.example.umusic.services;
 
 import com.example.umusic.Models.Responses.ArtistResponse;
+import com.example.umusic.Models.Responses.ArtistsResponse;
 import com.example.umusic.Models.Responses.TracksResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,9 +47,9 @@ public class LastFMServices {
         return call;
     }
 
-    public Call<ArtistResponse> GetAllTopArtists()
+    public Call<ArtistsResponse> GetAllTopArtists()
     {
-        Call<ArtistResponse> call = api.getTopArtist(API_KEY);
+        Call<ArtistsResponse> call = api.getTopArtist(API_KEY);
         return call;
     }
 }

@@ -6,12 +6,4 @@ import java.util.List;
 
 public class ArtistResponse {
     public List<ArtistData> artist;
-
-    public List<ArtistData> getArtist() {
-        return artist;
-    }
-
-    public void setArtist(List<ArtistData> artist) {
-        this.artist = artist;
-    }
 }

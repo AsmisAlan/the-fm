@@ -1,11 +1,11 @@
 package com.example.umusic.Models.DataTransfers;
 
 public class ArtistData extends BaseImageData{
-    String name;
+    public String name;
 
-    String playcount;
+    public String playcount;
 
-    String listeners;
+    public String listeners;
 
-    String url;
+    public String url;
 }

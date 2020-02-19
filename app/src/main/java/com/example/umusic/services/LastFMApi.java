@@ -1,6 +1,6 @@
 package com.example.umusic.services;
 
-import com.example.umusic.Models.Responses.ArtistResponse;
+import com.example.umusic.Models.Responses.ArtistsResponse;
 import com.example.umusic.Models.Responses.TracksResponse;
 
 
@@ -14,7 +14,7 @@ public interface LastFMApi {
     Call<TracksResponse> getTopTracks(@Query("api_key") String api_key);
 
     @GET("?method=chart.gettopartists&format=json")
-    Call<ArtistResponse> getTopArtist(@Query("api_key") String api_key);
+    Call<ArtistsResponse> getTopArtist(@Query("api_key") String api_key);
 }
 
 

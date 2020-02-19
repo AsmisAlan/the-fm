@@ -23,12 +23,14 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        BottomNavigationView bottonBar =  findViewById(R.id.bottom_bar);
-        bottonBar.setOnNavigationItemSelectedListener(new  HomeBootomMenu(toolbar) );
+        BottomNavigationView bottomBar =  findViewById(R.id.bottom_bar);
+        bottomBar.setSelectedItemId(R.id.tab_tracks);
+        bottomBar.setOnNavigationItemSelectedListener(new HomeBottomMenu(toolbar) );
+        bottomBar.performClick();
     }
 
-    class HomeBootomMenu implements BottomNavigationView.OnNavigationItemSelectedListener {
-        public HomeBootomMenu(Toolbar toolbar)
+    class HomeBottomMenu implements BottomNavigationView.OnNavigationItemSelectedListener {
+        public HomeBottomMenu(Toolbar toolbar)
         {
             this.toolbar = toolbar;
         }

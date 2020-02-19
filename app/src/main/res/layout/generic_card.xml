@@ -30,12 +30,6 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:paddingBottom="@dimen/activity_vertical_margin"
             >
 
-            <TextView
-                android:id="@+id/person_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,10 +38,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 >
 
                 <TextView
-                    android:id="@+id/track_name"
+                    android:id="@+id/generic_card_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dance mokey"
+                    android:text="Dance monkey"
                     android:textSize="30dp"
                     />
 
@@ -60,7 +54,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 >
 
                 <TextView
-                    android:id="@+id/track_playcount"
+                    android:id="@+id/generic_card_payload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4"
@@ -68,7 +62,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                     />
 
                 <TextView
-                    android:id="@+id/days_ago"
+                    android:id="@+id/generic_card_payload_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reproducciones"
