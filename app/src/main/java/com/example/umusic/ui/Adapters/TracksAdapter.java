@@ -1,8 +1,10 @@
 package com.example.umusic.ui.Adapters;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,6 +51,7 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
         private TrackData track;
         private TextView trackName;
         private TextView payloadCount;
+        private ImageView pictureCard;
 
         public TrackData getTrack() {
             return track;
@@ -57,14 +60,16 @@ public class TracksAdapter extends RecyclerView.Adapter<TracksAdapter.ViewHolder
         public void setTrack(TrackData track) {
             this.track = track;
 
-            this.trackName.setText(track.getName());
-            this.payloadCount.setText(track.getPlaycount());
+            this.trackName.setText(track.name);
+            this.payloadCount.setText(track.playcount); 
         }
 
         public ViewHolder(@NonNull View itemView) {
             super( itemView);
             trackName = itemView.findViewById(R.id.track_name);
             payloadCount = itemView.findViewById(R.id.track_playcount);
+            pictureCard = itemView.findViewById(R.id.picture_card);
+
         }
     }
 }
